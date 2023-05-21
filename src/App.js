@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import HeaderMain from "./Components/HeaderMain";
+import Textpage from "./Components/Textpage";
+import Toolbar from "./Components/Toolbar";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* Google Docs Text Editor */}
+      <div className="">
+        <HeaderMain />
+      </div>
+      <Toolbar />
+      {/* <Textpage /> */}
     </div>
   );
 }

@@ -1,38 +1,198 @@
 .App {
-  text-align: center;
+    background-color: #edf2f53b;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+
+.btnn {
+    background-color: rgba(54, 136, 224, 0.619);
+
+    border-radius: 50px;
+    margin: 5px 10px;
+    padding: 8px 20px;
+    cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.btnn:hover{
+    box-shadow: 0 0 5px 0 rgba(147, 147, 147, 0.5);
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.filename {
+    font-size: 1.1rem;
+    color: rgb(49, 47, 47);
+    border: none;
 }
 
-.App-link {
-  color: #61dafb;
+.head {}
+
+.tools {}
+
+.commands{
+    color: #5a5959;
+    font-size: 15px;
+    
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.toolbar {
+    background-color: rgba(155, 182, 232, 0.201);
+    /* background-color: rgb(155, 182, 232); */
+    border-radius: 25px;
+    padding: 0.5rem;
+    height: fit-content !important;
+}
+
+.toolbtn {
+    border: none;
+    background-color: transparent;
+    font-size: 15px;
+    /* margin: 0 7px; */
+}
+
+.toolbtn:hover,
+.toolbtn:focus,
+.toolbtn:active {
+    border: none !important;
+    outline: none !important;
+}
+
+.inputnum {
+    width: 40px;
+    height: 20px;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.user {
+    /* border-radius: 50%; */
+}
+
+.onhover {
+    cursor: pointer;
+}
+
+.onhover:hover {
+    background-color: rgba(214, 214, 214, 0.733);
+    border-radius: 5px;
+}
+
+
+.acti {
+    background-color: #c9daf5;
+    border-radius: 5px;
+}
+.onhoverbtn:hover {}
+
+.onhoveruser:hover {
+    background-color: rgba(214, 214, 214, 0.733) !important;
+    border-radius: 50%;
+}
+
+
+
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 15px;
+    gap: 8px;
+    height: 38px;
+    width: 100px;
+    border: none;
+    background-color: #c2e7ff;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.sub {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.lable {
+    font-size: 15px;
+}
+
+.listimg {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #a1cbe7;
+}
+
+.outerdiv {
+    border-top: 1px solid rgb(199, 199, 199);
+    border-left: 1px solid rgb(199, 199, 199);
+    border-right: 1px solid rgb(199, 199, 199);
+    
+    z-index: -100;
+}
+
+.innerdiv {
+
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(199, 199, 199);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    width: 60%;
+    margin: 10px auto;
+
+}
+
+#inputtext {
+    outline: none;
+    border: none;
+    height: 87vh !important;
+    width: 100% !important;
+}
+
+.textarea{
+    margin:2rem 2rem;
+}
+.dropdown-item {
+    padding: 0.25rem 0.5rem !important;
+}
+
+.dropdown-menu li {
+    position: relative;
+}
+
+
+
+.dropdown-menu .dropdown-submenu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: -7px;
+}
+
+.dropdown-menu .dropdown-submenu-left {
+    right: 100%;
+    left: auto;
+}
+
+.dropdown-menu>li:hover>.dropdown-submenu {
+    display: block;
+}
+
+.dropdown-toggle::after {
+    display: none !important;
 }
