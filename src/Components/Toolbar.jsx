@@ -29,6 +29,7 @@ import {
   MdOutlineEditNote,
   MdOutlineDraw,
   MdPlusOne,
+  MdOutlineKeyboardArrowRight,
 } from "react-icons/md";
 import {
   FaGoogleDrive,
@@ -46,6 +47,8 @@ const Toolbar = () => {
   const [bold, setBold] = useState(false);
   const [italic, setItalic] = useState(false);
   const [underline, setUnderline] = useState(false);
+  const [close, setClose] = useState(false);
+
 
 
   //hanldeBold function which is used to change the font weight of text to  bold/normal of textarea
@@ -92,6 +95,11 @@ const Toolbar = () => {
   const handlePrint = () => { };
   const handleFormat = () => { };
   const handleSpell = () => { };
+
+  const handleClose = () => {
+    setClose(!close);
+  };
+
   const handleOnChange = (event) => {
     // console.log("OnChane");
     setText(event.target.value);
@@ -102,7 +110,7 @@ const Toolbar = () => {
       <div className="d-flex  justify-content-between tools  ">
         {/* Toolbar which contains all the tools */}
         <div>
-          <div className="toolbar d-flex  justify-content-between   mx-3" style={{ width: '93vw' }}>
+          <div className="toolbar d-flex  justify-content-between   mx-3" style={{ width: '92vw' }}>
             <div className="d-flex align-items-center ">
               <div className=" border-right border-dark div1">
                 <button
@@ -1045,48 +1053,55 @@ const Toolbar = () => {
           </div>
         </div>
         {/* sidebar */}
-        <div className="d-flex flex-column " >
-          <div className="sidebarlogo">
-            <div className="onhover p-1">
-              {" "}
-              <a href="https://calendar.google.com/calendar/u/0/r" target="_blank" title="Calender" className="sidelogo ">
-                <img src="	https://www.gstatic.com/companion/icon_assets/calendar_2020q4_2x.png" alt="Calender" />
-              </a>
-            </div>
-            <div className="onhover p-1">
-              {" "}
-              <a href="https://keep.google.com" target="_blank" title="Google Keep" className="sidelogo ">
-                <img src="	https://www.gstatic.com/companion/icon_assets/keep_2020q4v3_2x.png" alt="Google Keep" />
-              </a>
-            </div>
-            <div className="onhover p-1">
-              {" "}
-              <a href="" target="_blank" title="Undo" className="sidelogo ">
-                <img src="	https://www.gstatic.com/companion/icon_assets/tasks_2021_2x.png" alt="logo" />
-              </a>
-            </div>
-            <div className="onhover p-1">
-              {" "}
-              <a href="https://contacts.google.com/u/0?hl=en" target="_blank" title="Contacts" className="sidelogo ">
-                <img src="	https://www.gstatic.com/companion/icon_assets/contacts_2022_2x.png" alt="Contacts" />
-              </a>
-            </div>
-            <div className="onhover p-1">
-              {" "}
-              <a href="https://www.google.com/maps/@24.4145424,74.4877302,13z?authuser=0&hl=en" target="_blank" title="Map" className="sidelogo ">
-                <img src="	https://www.gstatic.com/companion/icon_assets/maps_v2_2x.png" alt="Map" />
-              </a>
-            </div>
+        <div className={`d-flex flex-column justify-content-between align-items-center sidebar  `} >
+          <div className={`d-flex flex-column  align-items-center ${close ? 'close' : ''}`}>
+            <div className="sidebarlogo">
+              <div className="onhover p-1">
+                {" "}
+                <a href="https://calendar.google.com/calendar/u/0/r" target="_blank" title="Calender" className="sidelogo ">
+                  <img src="	https://www.gstatic.com/companion/icon_assets/calendar_2020q4_2x.png" alt="Calender" />
+                </a>
+              </div>
+              <div className="onhover p-1">
+                {" "}
+                <a href="https://keep.google.com" target="_blank" title="Google Keep" className="sidelogo ">
+                  <img src="	https://www.gstatic.com/companion/icon_assets/keep_2020q4v3_2x.png" alt="Google Keep" />
+                </a>
+              </div>
+              <div className="onhover p-1">
+                {" "}
+                <a href="" target="_blank" title="Undo" className="sidelogo ">
+                  <img src="	https://www.gstatic.com/companion/icon_assets/tasks_2021_2x.png" alt="logo" />
+                </a>
+              </div>
+              <div className="onhover p-1">
+                {" "}
+                <a href="https://contacts.google.com/u/0?hl=en" target="_blank" title="Contacts" className="sidelogo ">
+                  <img src="	https://www.gstatic.com/companion/icon_assets/contacts_2022_2x.png" alt="Contacts" />
+                </a>
+              </div>
+              <div className="onhover p-1">
+                {" "}
+                <a href="https://www.google.com/maps/@24.4145424,74.4877302,13z?authuser=0&hl=en" target="_blank" title="Map" className="sidelogo ">
+                  <img src="	https://www.gstatic.com/companion/icon_assets/maps_v2_2x.png" alt="Map" />
+                </a>
+              </div>
 
+            </div>
+            <div className="list-unstyled w-fit">
+              <hr className="" style={{ backgroundColor: "gray" }} />
+            </div>
+            <div className="d-flex flex-column  align-items-center">
+              {" "}
+              <a href="https://console.cloud.google.com/marketplace" title="More" className="sidelogo ">
+                <AiOutlinePlus className=" " size="22px" />{" "}
+              </a>
+            </div>
           </div>
-          <div className="list-unstyled">
-            <hr className="" style={{ backgroundColor: "gray" }} />
-          </div>
-          <div className="mx-auto">
-            {" "}
-            <a href="https://console.cloud.google.com/marketplace" title="More" className="sidelogo ">
-              <AiOutlinePlus className=" " size="18px" />{" "}
-            </a>
+          <div className="onhover mx-0" style={{position:'fixed',top:'90vh'}}>
+            <button href="https://console.cloud.google.com/marketplace" onClick={handleClose} title="More" className="toolbtn ">
+              <MdOutlineKeyboardArrowRight className=" " size="22px" />{" "}
+            </button>
           </div>
         </div>
       </div>
