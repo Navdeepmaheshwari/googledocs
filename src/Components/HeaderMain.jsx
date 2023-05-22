@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import { IoDocumentTextSharp, IoDocumentText } from "react-icons/io5";
 import {
   MdOutlineComment,
   MdOutlineVideocam,
-  MdOutlineTimer,
   MdLockOutline,
-  MdOutlineStarOutline,
   MdOutlineAccountCircle,
   MdOutlineArrowDropDown,
   MdOutlineArrowRight,
@@ -26,19 +23,14 @@ import {
   MdSelectAll,
   MdStar,
   MdStarBorder,
-  MdOutlineDriveEta,
-  MdOutlineAddToDrive,
   MdOutlineCloudDone,
   MdAddToDrive,
   MdFindReplace,
-  MdDelete,
   MdDeleteOutline,
   MdEdit,
   MdFullscreen,
-  MdArrowRight,
   MdDone,
   MdCheckBoxOutlineBlank,
-  MdImage,
   MdOutlineImage,
   MdBlock,
   MdTableView,
@@ -46,6 +38,7 @@ import {
   MdAddChart,
   MdEmojiEmotions,
   MdHorizontalRule,
+  MdOutlineDriveFileMove,
 } from "react-icons/md";
 const HeaderMain = () => {
   const [name, setName] = useState(""); // to set the filename
@@ -62,14 +55,14 @@ const HeaderMain = () => {
   return (
     <div className="d-flex head justify-content-between mx-3 my-1">
       <div className="left d-flex align-items-center ">
-        <div className="mx-auto" size="35px">
-          {/* <img src="https://cdn-icons-png.flaticon.com/512/5968/5968517.png" alt="" /> */}
-          <IoDocumentText color="#4285F4" size="40px" className="mt-2" />
+        <div className="mx-auto logo">
+          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968517.png" alt="logo" />
+
         </div>
         <div>
           <div className="d-flex align-items-center ">
             <input
-              className="mb-0 px-1 filename"
+              className="mb-0 px-1 filename "
               placeholder="Untitled Document"
               value={name}
               onChange={handleName}
@@ -87,13 +80,13 @@ const HeaderMain = () => {
               <MdStarBorder
                 color="#5f6368"
                 size="20px"
-                className="mr-2 onhover"
+                className="m-2 onhover"
                 onClick={handleFav}
                 style={{ cursor: "pointer" }}
               />
             )}
 
-            <MdMoveToInbox
+            <MdOutlineDriveFileMove
               color="#5f6368"
               size="20px"
               className="m-2 onhover"
