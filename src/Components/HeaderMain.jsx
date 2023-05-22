@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   MdOutlineComment,
   MdOutlineVideocam,
@@ -48,10 +48,12 @@ const HeaderMain = () => {
   const handleName = (event) => {
     // console.log("OnChane");
     setName(event.target.value);
+    document.title = name+'- Google Docs';
   };
   const handleFav = (event) => {
     setfav(!fav);
   };
+
   return (
     <div className="d-flex head justify-content-between mx-3 my-1">
       <div className="left d-flex align-items-center ">
@@ -80,7 +82,7 @@ const HeaderMain = () => {
               <MdStarBorder
                 color="#5f6368"
                 size="20px"
-                className="m-2 onhover"
+                className="mr-2 onhover"
                 onClick={handleFav}
                 style={{ cursor: "pointer" }}
               />

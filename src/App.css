@@ -1,11 +1,13 @@
 .App {
     background-color: #edf2f53b;
+    box-sizing: border-box;
 }
 
 .logo img{
     width: 35px;
     height: 35px;
 }
+
 .btnn {
     background-color: rgba(54, 136, 224, 0.619);
 
@@ -35,7 +37,9 @@
     font-size: 15px;
 
 }
-
+.tools{
+   width: 98vw !important; 
+}
 .toolbar {
     background-color: rgba(155, 182, 232, 0.201);
     /* background-color: rgb(155, 182, 232); */
@@ -142,6 +146,29 @@ a:hover {
 
 .button:hover {
     background: #a1cbe7;
+}
+
+.sidelogo img{
+    width: 25px;
+    height: 25px;
+}
+.sidebarlogo{
+    margin-top: 0rem;
+    /* padding-right: 10px; */
+}
+
+.sidebarlogo div{
+    margin: 2rem 0rem !important;
+
+    /* padding: 0 1rem !important; */
+    
+}
+.sidebarlogo div:first-child{
+    margin-top: 1rem !important;
+}
+
+.sidebarlogo div:last-child{
+    margin-bottom: 0.5rem !important;
 }
 
 .outerdiv {
