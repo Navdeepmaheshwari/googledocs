@@ -39,9 +39,13 @@
 }
 
 .tools {
-    width: 98vw !important;
+    width: 97vw !important;
 }
 
+.alltools{
+
+    width: 100%;
+}
 .toolbar {
     background-color: rgba(155, 182, 232, 0.201);
     /* background-color: rgb(155, 182, 232); */
@@ -93,6 +97,13 @@ a:hover {
 
 }
 
+.closebtn{
+    background-color: rgba(214, 214, 214, 0.733);
+    border-radius: 5px;
+
+    padding: 0.2rem;
+    /* margin: auto; */
+}
 
 .acti {
     background-color: #c9daf5;

@@ -30,6 +30,7 @@ import {
   MdOutlineDraw,
   MdPlusOne,
   MdOutlineKeyboardArrowRight,
+  MdOutlineKeyboardArrowLeft,
 } from "react-icons/md";
 import {
   FaGoogleDrive,
@@ -109,8 +110,8 @@ const Toolbar = () => {
     <div className="">
       <div className="d-flex  justify-content-between tools  ">
         {/* Toolbar which contains all the tools */}
-        <div>
-          <div className="toolbar d-flex  justify-content-between   mx-3" style={{ width: '92vw' }}>
+        <div className="alltools">
+          <div className={`toolbar d-flex  justify-content-between   mx-3 ${close ? "" : ""}`}>
             <div className="d-flex align-items-center ">
               <div className=" border-right border-dark div1">
                 <button
@@ -1098,9 +1099,9 @@ const Toolbar = () => {
               </a>
             </div>
           </div>
-          <div className="onhover mx-0" style={{position:'fixed',top:'90vh'}}>
+          <div className="closebtn d-flex align-items-center" style={{ position: 'fixed', top: '90vh' }}>
             <button href="https://console.cloud.google.com/marketplace" onClick={handleClose} title="More" className="toolbtn ">
-              <MdOutlineKeyboardArrowRight className=" " size="22px" />{" "}
+              {close ? <MdOutlineKeyboardArrowLeft className=" " size="22px" /> : <MdOutlineKeyboardArrowRight className=" " size="22px" />}  {" "}
             </button>
           </div>
         </div>
