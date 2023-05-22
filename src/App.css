@@ -13,25 +13,25 @@
     cursor: pointer;
 }
 
-.btnn:hover{
+.btnn:hover {
     box-shadow: 0 0 5px 0 rgba(147, 147, 147, 0.5);
 
 }
 
 .filename {
+    width: 130px;
     font-size: 1.1rem;
-    color: rgb(49, 47, 47);
+    color: rgb(21, 21, 21);
     border: none;
+    /* font-weight: 500; */
 }
 
-.head {}
 
-.tools {}
 
-.commands{
+.commands {
     color: #5a5959;
     font-size: 15px;
-    
+
 }
 
 .toolbar {
@@ -88,6 +88,7 @@ a:hover {
     background-color: #c9daf5;
     border-radius: 5px;
 }
+
 .onhoverbtn:hover {}
 
 .onhoveruser:hover {
@@ -142,7 +143,7 @@ a:hover {
     border-top: 1px solid rgb(199, 199, 199);
     border-left: 1px solid rgb(199, 199, 199);
     border-right: 1px solid rgb(199, 199, 199);
-    
+
     z-index: -100;
 }
 
@@ -164,9 +165,10 @@ a:hover {
     width: 100% !important;
 }
 
-.textarea{
-    margin:2rem 2rem;
+.textarea {
+    margin: 2rem 2rem;
 }
+
 .dropdown-item {
     padding: 0.25rem 0.5rem !important;
 }
@@ -195,4 +197,62 @@ a:hover {
 
 .dropdown-toggle::after {
     display: none !important;
+}
+
+.div5,
+.div-4,
+.div3 {
+    display: none !important;
+}
+
+.div5in,
+.div4in,
+.div3 {
+    display: block !important;
+}
+
+@media screen and (min-width: 1200px) {
+    .div5 {
+        display: block !important;
+    }
+
+    .div5in {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .div-4 {
+        display: block !important;
+    }
+
+    .div4in {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .div3 {
+        display: block !important;
+    }
+
+
+}
+
+@media screen and (max-width: 768px) {
+
+    .listItem ul li {
+        margin: 0 !important;
+        /* padding: 0 !important; */
+
+    }
+}
+
+@media screen and (max-width: 468px) {
+
+    .listItem ul li a {
+        font-size: 15px !important;
+        /* padding: 0 !important; */
+
+    }
 }

@@ -11,20 +11,13 @@ import {
   MdOutlineFormatColorText,
   MdOutlineColorize,
   MdOutlineMoreVert,
-  MdOutlineBorderColor,
   MdKeyboardArrowUp,
   MdOutlineFormatAlignCenter,
   MdOutlineFormatLineSpacing,
   MdOutlineChecklistRtl,
   MdOutlineFormatListBulleted,
   MdOutlineFormatListNumberedRtl,
-  MdOutlineArrowDropDownCircle,
   MdOutlineArrowDropDown,
-  MdUndo,
-  MdFormatAlignCenter,
-  MdFormatAlignJustify,
-  MdFormatAlignLeft,
-  MdFormatAlignRight,
   MdFormatIndentDecrease,
   MdFormatIndentIncrease,
   MdFormatClear,
@@ -45,11 +38,15 @@ import {
 } from "react-icons/fa";
 import { SiGooglekeep } from "react-icons/si";
 const Toolbar = () => {
+
+  //states to change
   const [text, setText] = useState("");
   const [bold, setBold] = useState(false);
   const [italic, setItalic] = useState(false);
+  const [underline, setUnderline] = useState(false);
 
 
+  //hanldeBold function which is used to change the font weight of text to  bold/normal of textarea
   const handleBold = () => {
     let textarea = document.getElementById("inputtext");
 
@@ -61,6 +58,8 @@ const Toolbar = () => {
       setBold(false);
     }
   };
+
+  //hanldeItalic function which is used to change the font style of text to Italic/normal of 
   const handleItalic = () => {
     let textarea = document.getElementById("inputtext");
     if (textarea.style.fontStyle == "italic") {
@@ -71,46 +70,38 @@ const Toolbar = () => {
       setItalic(true)
     }
   };
+
+  //hanldeUnderline function is used to underline the text
+
   const handleUnderline = () => {
     let textarea = document.getElementById("inputtext");
     if (textarea.style.textDecoration == "none") {
       textarea.style.textDecoration = "underline";
+      setUnderline(true);
     } else {
       textarea.style.textDecoration = "none";
+      setUnderline(false);
     }
   };
-  const handleColor = () => {
-    const selectedText = window.getSelection().toString();
-    const transformedText = selectedText.toUpperCase();
-    const updatedText = text.replace(selectedText, transformedText);
-    setText(updatedText);
-    //    showAlert("Converted to UpperCase","success");
-  };
-  const handleHighlight = () => {
-    const selectedText = window.getSelection().toString();
-    const transformedText = selectedText.toUpperCase();
-    const updatedText = text.replace(selectedText, transformedText);
-    setText(updatedText);
-    //    showAlert("Converted to UpperCase","success");
-  };
-
-  const handleUndo = () => {};
-
-  const handleRedo = () => {};
-  const handlePrint = () => {};
-  const handleFormat = () => {};
-  const handleSpell = () => {};
+  const handleColor = () => { };
+  const handleHighlight = () => { };
+  const handleUndo = () => { };
+  const handleRedo = () => { };
+  const handlePrint = () => { };
+  const handleFormat = () => { };
+  const handleSpell = () => { };
   const handleOnChange = (event) => {
     // console.log("OnChane");
     setText(event.target.value);
   };
-  const divRef = useRef();
+
   return (
     <div>
       <div className="d-flex tools justify-content-between w-100">
+        {/* Toolbar which contains all the tools */}
         <div className="toolbar d-flex  justify-content-between h-fit w-100  mx-3">
           <div className="d-flex align-items-center ">
-            <div className=" border-right border-dark">
+            <div className=" border-right border-dark div1">
               <button
                 onClick={handleUndo}
                 title="Undo"
@@ -172,7 +163,7 @@ const Toolbar = () => {
                 <option value="syntax_highlighting">150%</option>
               </select>
             </div>{" "}
-            <div className="border-right border-dark">
+            <div className="border-right border-dark div2">
               <select
                 title="Styles"
                 class="selectpicker border-0 pointer mx-2 bg-transparent onhover"
@@ -183,7 +174,13 @@ const Toolbar = () => {
                   Heading1
                 </option>
                 <option value="last_name">Heading2</option>
-                <option value="syntax_highlighting">Heading2</option>
+                <option value="syntax_highlighting">Heading3</option>
+                <option value="syntax_highlighting">Heading4</option>
+                <option value="syntax_highlighting">Heading5</option>
+                <option value="syntax_highlighting">Heading6</option>
+
+
+
               </select>
 
               <select
@@ -201,23 +198,24 @@ const Toolbar = () => {
                 <option value="syntax_highlighting">Impact</option>
               </select>
             </div>
-            <div className="border-right border-dark" title="Font Size">
-              <button onclick="increment()" className="toolbtn">
-                <span className="font-weight-bold h5">+</span>
+            <div className="border-right border-dark div3 pointer" title="Font Size">
+            <button onclick="decrement()" className="toolbtn">
+                <span className="font-weight-bold h5">-</span>
               </button>
+             
               <input
                 type="number"
                 name=""
                 id=""
                 className="inputnum text-center"
-                value={11}
+                // placeholder="11"
+                defaultValue={11}
               />
-              <button onclick="decrement()" className="toolbtn">
-                <span className="font-weight-bold h5">-</span>
+              <button onclick="increment()" className="toolbtn">
+                <span className="font-weight-bold h5">+</span>
               </button>
             </div>
-            <div
-              className="ml-2 border-right border-dark"
+            <div className="ml-2 border-right border-dark div-4"
               style={{ display: "flex", justifyContent: "center" }}
             >
               <button
@@ -241,7 +239,7 @@ const Toolbar = () => {
               </button>
               <button
                 onClick={handleUnderline}
-                className="mr-2 px-1 onhover toolbtn"
+                className={`mr-2 px-1 onhover toolbtn ${underline ? "acti" : ""}`}
                 title="Underline"
               >
                 <div className="d-flex align-items-center">
@@ -268,301 +266,303 @@ const Toolbar = () => {
               </button>
             </div>
             <div
-              className="ml-2  border-dark"
+              className="ml-2  border-dark "
               style={{ display: "flex", justifyContent: "center" }}
             >
-              <button className="mr-1 px-1 onhover toolbtn" title="Align">
-                <li
-                  className="d-flex align-items-center dropdown-toggle"
-                  id="navbarDropdownMenuLink"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <MdOutlineFormatAlignCenter size="20px" />
-                  <MdOutlineArrowDropDown />
-                </li>
-                <ul
-                  className="dropdown-menu"
-                  aria-labelledby="navbarDropdownMenuLink"
-                  style={{
-                    marginTop: "0.4rem",
-                    width: "fit-content",
-                    backgroundColor: "#edf2fa",
-                  }}
-                >
-                  <div className="d-flex px-1 align-items-center">
-                    {" "}
-                    <li className="" title="Center">
-                      <a className="dropdown-item onhover" href="#">
-                        <div className="listimg ">
-                          <MdOutlineFormatAlignCenter
-                            className=" "
-                            size="20px"
-                          />{" "}
-                        </div>
-                      </a>
-                    </li>
-                    <li title="Justify">
-                      <a className="dropdown-item onhover" href="#">
-                        <div className="listimg ">
-                          <MdOutlineFormatAlignJustify
-                            className=" "
-                            size="20px"
-                          />{" "}
-                          {/* <span className="lable">Cut</span> */}
-                        </div>
-                      </a>
-                    </li>
-                    <li title=" Left">
-                      <a className="dropdown-item onhover" href="#">
-                        <div className="listimg ">
-                          <MdOutlineFormatAlignLeft className=" " size="20px" />{" "}
-                          {/* <span className="lable">Copy</span> */}
-                        </div>
-                      </a>
-                    </li>
-                    <li title="Right">
-                      <a className="dropdown-item onhover" href="#">
-                        <div className="listimg ">
-                          <MdOutlineFormatAlignRight
-                            className=" "
-                            size="20px"
-                          />{" "}
-                          {/* <span className="lable">Paste</span> */}
-                        </div>
-                      </a>
-                    </li>
-                  </div>
-                </ul>
-              </button>
+              <div className="div5">
+                <button className="mr-1 px-1 onhover toolbtn" title="Align">
+                  <li
+                    className="d-flex align-items-center dropdown-toggle"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <MdOutlineFormatAlignCenter size="20px" />
+                    <MdOutlineArrowDropDown />
+                  </li>
+                  <ul
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink"
+                    style={{
+                      marginTop: "0.4rem",
+                      width: "fit-content",
+                      backgroundColor: "#edf2fa",
+                    }}
+                  >
+                    <div className="d-flex px-1 align-items-center">
+                      {" "}
+                      <li className="" title="Center">
+                        <a className="dropdown-item onhover" href="#">
+                          <div className="listimg ">
+                            <MdOutlineFormatAlignCenter
+                              className=" "
+                              size="20px"
+                            />{" "}
+                          </div>
+                        </a>
+                      </li>
+                      <li title="Justify">
+                        <a className="dropdown-item onhover" href="#">
+                          <div className="listimg ">
+                            <MdOutlineFormatAlignJustify
+                              className=" "
+                              size="20px"
+                            />{" "}
+                            {/* <span className="lable">Cut</span> */}
+                          </div>
+                        </a>
+                      </li>
+                      <li title=" Left">
+                        <a className="dropdown-item onhover" href="#">
+                          <div className="listimg ">
+                            <MdOutlineFormatAlignLeft className=" " size="20px" />{" "}
+                            {/* <span className="lable">Copy</span> */}
+                          </div>
+                        </a>
+                      </li>
+                      <li title="Right">
+                        <a className="dropdown-item onhover" href="#">
+                          <div className="listimg ">
+                            <MdOutlineFormatAlignRight
+                              className=" "
+                              size="20px"
+                            />{" "}
+                            {/* <span className="lable">Paste</span> */}
+                          </div>
+                        </a>
+                      </li>
+                    </div>
+                  </ul>
+                </button>
 
-              <button
-                className="mr-1 px-1 onhover toolbtn"
-                title="Line Spacing"
-              >
-                <li className="d-flex align-items-center ">
-                  <MdOutlineFormatLineSpacing size="20px" />
-                  {/* <MdOutlineArrowDropDown /> */}
-                </li>
-              </button>
-              <button
-                href=""
-                className="mr-1 px-1 onhover toolbtn"
-                title="Line Spacing"
-              >
-                <li
-                  className="d-flex align-items-center dropdown-toggle"
-                  id="navbarDropdownMenuLink"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-expanded="false"
+                <button
+                  className="mr-1 px-1 onhover toolbtn"
+                  title="Line Spacing"
                 >
-                  <MdOutlineChecklistRtl size="20px" />
-                  <MdOutlineArrowDropDown />
-                </li>
-                <ul
-                  className="dropdown-menu"
-                  aria-labelledby="navbarDropdownMenuLink"
-                  style={{
-                    marginTop: "0.4rem",
-                    width: "fit-content",
-                    backgroundColor: "#edf2fa",
-                  }}
-                >
-                  <div className="d-flex px-1 align-items-center">
-                    {" "}
-                    <li className="" title="Center">
-                      <a className="dropdown-item onhover" href="#">
-                        <div className="listimg ">
-                          <MdOutlineFormatAlignCenter
-                            className=" "
-                            size="20px"
-                          />{" "}
-                        </div>
-                      </a>
-                    </li>
-                    <li title="Justify">
-                      <a className="dropdown-item onhover" href="#">
-                        <div className="listimg ">
-                          <MdOutlineFormatAlignJustify
-                            className=" "
-                            size="20px"
-                          />{" "}
-                          {/* <span className="lable">Cut</span> */}
-                        </div>
-                      </a>
-                    </li>
-                    <li title=" Left">
-                      <a className="dropdown-item onhover" href="#">
-                        <div className="listimg ">
-                          <MdOutlineFormatAlignLeft className=" " size="20px" />{" "}
-                          {/* <span className="lable">Copy</span> */}
-                        </div>
-                      </a>
-                    </li>
-                    <li title="Right">
-                      <a className="dropdown-item onhover" href="#">
-                        <div className="listimg ">
-                          <MdOutlineFormatAlignRight
-                            className=" "
-                            size="20px"
-                          />{" "}
-                          {/* <span className="lable">Paste</span> */}
-                        </div>
-                      </a>
-                    </li>
-                  </div>
-                </ul>
-              </button>
+                  <li className="d-flex align-items-center ">
+                    <MdOutlineFormatLineSpacing size="20px" />
+                    {/* <MdOutlineArrowDropDown /> */}
+                  </li>
+                </button>
 
-              <button
-                href=""
-                className="mr-1 px-1 onhover toolbtn"
-                title="Line Spacing"
-              >
-                <li
-                  className="d-flex align-items-center dropdown-toggle"
-                  id="navbarDropdownMenuLink"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-expanded="false"
+                <button
+                  href=""
+                  className="mr-1 px-1 onhover toolbtn"
+                  title="Line Spacing"
                 >
-                  <MdOutlineFormatListBulleted size="20px" />
-                  <MdOutlineArrowDropDown />
-                </li>
-                <ul
-                  className="dropdown-menu"
-                  aria-labelledby="navbarDropdownMenuLink"
-                  style={{
-                    marginTop: "0.4rem",
-                    width: "fit-content",
-                    backgroundColor: "#edf2fa",
-                  }}
-                >
-                  <div className="d-flex px-1 align-items-center">
-                    {" "}
-                    <li className="" title="Center">
-                      <a className="dropdown-item onhover" href="#">
-                        <div className="listimg ">
-                          <MdOutlineFormatAlignCenter
-                            className=" "
-                            size="20px"
-                          />{" "}
-                        </div>
-                      </a>
-                    </li>
-                    <li title="Justify">
-                      <a className="dropdown-item onhover" href="#">
-                        <div className="listimg ">
-                          <MdOutlineFormatAlignJustify
-                            className=" "
-                            size="20px"
-                          />{" "}
-                          {/* <span className="lable">Cut</span> */}
-                        </div>
-                      </a>
-                    </li>
-                    <li title=" Left">
-                      <a className="dropdown-item onhover" href="#">
-                        <div className="listimg ">
-                          <MdOutlineFormatAlignLeft className=" " size="20px" />{" "}
-                          {/* <span className="lable">Copy</span> */}
-                        </div>
-                      </a>
-                    </li>
-                    <li title="Right">
-                      <a className="dropdown-item onhover" href="#">
-                        <div className="listimg ">
-                          <MdOutlineFormatAlignRight
-                            className=" "
-                            size="20px"
-                          />{" "}
-                          {/* <span className="lable">Paste</span> */}
-                        </div>
-                      </a>
-                    </li>
-                  </div>
-                </ul>
-              </button>
+                  <li
+                    className="d-flex align-items-center dropdown-toggle"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <MdOutlineChecklistRtl size="20px" />
+                    <MdOutlineArrowDropDown />
+                  </li>
+                  <ul
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink"
+                    style={{
+                      marginTop: "0.4rem",
+                      width: "fit-content",
+                      backgroundColor: "#edf2fa",
+                    }}
+                  >
+                    <div className="d-flex px-1 align-items-center">
+                      {" "}
+                      <li className="" title="Center">
+                        <a className="dropdown-item onhover" href="#">
+                          <div className="listimg ">
+                            <MdOutlineFormatAlignCenter
+                              className=" "
+                              size="20px"
+                            />{" "}
+                          </div>
+                        </a>
+                      </li>
+                      <li title="Justify">
+                        <a className="dropdown-item onhover" href="#">
+                          <div className="listimg ">
+                            <MdOutlineFormatAlignJustify
+                              className=" "
+                              size="20px"
+                            />{" "}
+                            {/* <span className="lable">Cut</span> */}
+                          </div>
+                        </a>
+                      </li>
+                      <li title=" Left">
+                        <a className="dropdown-item onhover" href="#">
+                          <div className="listimg ">
+                            <MdOutlineFormatAlignLeft className=" " size="20px" />{" "}
+                            {/* <span className="lable">Copy</span> */}
+                          </div>
+                        </a>
+                      </li>
+                      <li title="Right">
+                        <a className="dropdown-item onhover" href="#">
+                          <div className="listimg ">
+                            <MdOutlineFormatAlignRight
+                              className=" "
+                              size="20px"
+                            />{" "}
+                            {/* <span className="lable">Paste</span> */}
+                          </div>
+                        </a>
+                      </li>
+                    </div>
+                  </ul>
+                </button>
 
-              <button
-                href=""
-                className="mr-1 px-1 onhover toolbtn"
-                title="Line Spacing"
-              >
-                <li
-                  className="d-flex align-items-center dropdown-toggle"
-                  id="navbarDropdownMenuLink"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-expanded="false"
+                <button
+                  href=""
+                  className="mr-1 px-1 onhover toolbtn"
+                  title="Line Spacing"
                 >
-                  <MdOutlineFormatListNumberedRtl
-                    size="20px"
-                    title="Numbered List "
-                  />
-                  <MdOutlineArrowDropDown />
-                </li>
-                <ul
-                  className="dropdown-menu"
-                  aria-labelledby="navbarDropdownMenuLink"
-                  style={{
-                    marginTop: "0.4rem",
-                    width: "fit-content",
-                    backgroundColor: "#edf2fa",
-                  }}
+                  <li
+                    className="d-flex align-items-center dropdown-toggle"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <MdOutlineFormatListBulleted size="20px" />
+                    <MdOutlineArrowDropDown />
+                  </li>
+                  <ul
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink"
+                    style={{
+                      marginTop: "0.4rem",
+                      width: "fit-content",
+                      backgroundColor: "#edf2fa",
+                    }}
+                  >
+                    <div className="d-flex px-1 align-items-center">
+                      {" "}
+                      <li className="" title="Center">
+                        <a className="dropdown-item onhover" href="#">
+                          <div className="listimg ">
+                            <MdOutlineFormatAlignCenter
+                              className=" "
+                              size="20px"
+                            />{" "}
+                          </div>
+                        </a>
+                      </li>
+                      <li title="Justify">
+                        <a className="dropdown-item onhover" href="#">
+                          <div className="listimg ">
+                            <MdOutlineFormatAlignJustify
+                              className=" "
+                              size="20px"
+                            />{" "}
+                            {/* <span className="lable">Cut</span> */}
+                          </div>
+                        </a>
+                      </li>
+                      <li title=" Left">
+                        <a className="dropdown-item onhover" href="#">
+                          <div className="listimg ">
+                            <MdOutlineFormatAlignLeft className=" " size="20px" />{" "}
+                            {/* <span className="lable">Copy</span> */}
+                          </div>
+                        </a>
+                      </li>
+                      <li title="Right">
+                        <a className="dropdown-item onhover" href="#">
+                          <div className="listimg ">
+                            <MdOutlineFormatAlignRight
+                              className=" "
+                              size="20px"
+                            />{" "}
+                            {/* <span className="lable">Paste</span> */}
+                          </div>
+                        </a>
+                      </li>
+                    </div>
+                  </ul>
+                </button>
+
+                <button
+                  href=""
+                  className="mr-1 px-1 onhover toolbtn"
+                  title="Line Spacing"
                 >
-                  <div className="d-flex px-1 align-items-center">
-                    {" "}
-                    <li className="" title="Center">
-                      <a className="dropdown-item onhover" href="#">
-                        <div className="listimg ">
-                          <MdOutlineFormatAlignCenter
-                            className=" "
-                            size="20px"
-                          />{" "}
-                        </div>
-                      </a>
-                    </li>
-                    <li title="Justify">
-                      <a className="dropdown-item onhover" href="#">
-                        <div className="listimg ">
-                          <MdOutlineFormatAlignJustify
-                            className=" "
-                            size="20px"
-                          />{" "}
-                          {/* <span className="lable">Cut</span> */}
-                        </div>
-                      </a>
-                    </li>
-                    <li title=" Left">
-                      <a className="dropdown-item onhover" href="#">
-                        <div className="listimg ">
-                          <MdOutlineFormatAlignLeft className=" " size="20px" />{" "}
-                          {/* <span className="lable">Copy</span> */}
-                        </div>
-                      </a>
-                    </li>
-                    <li title="Right">
-                      <a className="dropdown-item onhover" href="#">
-                        <div className="listimg ">
-                          <MdOutlineFormatAlignRight
-                            className=" "
-                            size="20px"
-                          />{" "}
-                          {/* <span className="lable">Paste</span> */}
-                        </div>
-                      </a>
-                    </li>
-                  </div>
-                </ul>
-              </button>
+                  <li
+                    className="d-flex align-items-center dropdown-toggle"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <MdOutlineFormatListNumberedRtl
+                      size="20px"
+                      title="Numbered List "
+                    />
+                    <MdOutlineArrowDropDown />
+                  </li>
+                  <ul
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink"
+                    style={{
+                      marginTop: "0.4rem",
+                      width: "fit-content",
+                      backgroundColor: "#edf2fa",
+                    }}
+                  >
+                    <div className="d-flex px-1 align-items-center">
+                      {" "}
+                      <li className="" title="Center">
+                        <a className="dropdown-item onhover" href="#">
+                          <div className="listimg ">
+                            <MdOutlineFormatAlignCenter
+                              className=" "
+                              size="20px"
+                            />{" "}
+                          </div>
+                        </a>
+                      </li>
+                      <li title="Justify">
+                        <a className="dropdown-item onhover" href="#">
+                          <div className="listimg ">
+                            <MdOutlineFormatAlignJustify
+                              className=" "
+                              size="20px"
+                            />{" "}
+                            {/* <span className="lable">Cut</span> */}
+                          </div>
+                        </a>
+                      </li>
+                      <li title=" Left">
+                        <a className="dropdown-item onhover" href="#">
+                          <div className="listimg ">
+                            <MdOutlineFormatAlignLeft className=" " size="20px" />{" "}
+                            {/* <span className="lable">Copy</span> */}
+                          </div>
+                        </a>
+                      </li>
+                      <li title="Right">
+                        <a className="dropdown-item onhover" href="#">
+                          <div className="listimg ">
+                            <MdOutlineFormatAlignRight
+                              className=" "
+                              size="20px"
+                            />{" "}
+                            {/* <span className="lable">Paste</span> */}
+                          </div>
+                        </a>
+                      </li>
+                    </div>
+                  </ul>
+                </button></div>
 
               <button
                 href=""
                 className="mr-2 px-1 onhover toolbtn"
-                title="Line Spacing"
+                title=""
               >
                 <li
                   className="d-flex align-items-center dropdown-toggle"
@@ -585,6 +585,342 @@ const Toolbar = () => {
                 >
                   <div className="d-flex px-1 align-items-center">
                     {" "}
+                    <div className="div4in">
+                      <button
+                        onClick={handleBold}
+                        className={`mr-2 px-1 onhover toolbtn ${bold ? "acti" : ""}`}
+                        title="Bold"
+                        id="bold"
+                      >
+                        <div className="d-flex align-items-center">
+                          <MdOutlineFormatBold size="20px" />
+                        </div>
+                      </button>
+                      <button
+                        onClick={handleItalic}
+                        className={`mr-2 px-1 onhover toolbtn ${italic ? "acti" : ""}`}
+                        title="Italic"
+                      >
+                        <div className="d-flex align-items-center">
+                          <MdOutlineFormatItalic size="20px" />
+                        </div>
+                      </button>
+                      <button
+                        onClick={handleUnderline}
+                        className="mr-2 px-1 onhover toolbtn"
+                        title="Underline"
+                      >
+                        <div className="d-flex align-items-center">
+                          <MdOutlineFormatUnderlined size="20px" />
+                        </div>
+                      </button>
+                      <button
+                        onClick={handleColor}
+                        className="mr-2 px-1 onhover toolbtn"
+                        title="Text Color "
+                      >
+                        <div className="d-flex align-items-center ">
+                          <MdOutlineFormatColorText size="20px" />
+                        </div>
+                      </button>
+                      <button
+                        onClick={handleHighlight}
+                        className="mr-2 px-1 onhover toolbtn"
+                        title="Highlight Text"
+                      >
+                        <div className="d-flex align-items-center">
+                          <MdOutlineColorize size="20px" />
+                        </div>
+                      </button>
+                    </div>
+                    <div className="div5in"> <button className="mr-1 px-1 onhover toolbtn" title="Align">
+                      <li
+                        className="d-flex align-items-center dropdown-toggle"
+                        id="navbarDropdownMenuLink"
+                        role="button"
+                        data-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        <MdOutlineFormatAlignCenter size="20px" />
+                        <MdOutlineArrowDropDown />
+                      </li>
+                      <ul
+                        className="dropdown-menu"
+                        aria-labelledby="navbarDropdownMenuLink"
+                        style={{
+                          marginTop: "0.4rem",
+                          width: "fit-content",
+                          backgroundColor: "#edf2fa",
+                        }}
+                      >
+                        <div className="d-flex px-1 align-items-center">
+                          {" "}
+                          <li className="" title="Center">
+                            <a className="dropdown-item onhover" href="#">
+                              <div className="listimg ">
+                                <MdOutlineFormatAlignCenter
+                                  className=" "
+                                  size="20px"
+                                />{" "}
+                              </div>
+                            </a>
+                          </li>
+                          <li title="Justify">
+                            <a className="dropdown-item onhover" href="#">
+                              <div className="listimg ">
+                                <MdOutlineFormatAlignJustify
+                                  className=" "
+                                  size="20px"
+                                />{" "}
+                                {/* <span className="lable">Cut</span> */}
+                              </div>
+                            </a>
+                          </li>
+                          <li title=" Left">
+                            <a className="dropdown-item onhover" href="#">
+                              <div className="listimg ">
+                                <MdOutlineFormatAlignLeft className=" " size="20px" />{" "}
+                                {/* <span className="lable">Copy</span> */}
+                              </div>
+                            </a>
+                          </li>
+                          <li title="Right">
+                            <a className="dropdown-item onhover" href="#">
+                              <div className="listimg ">
+                                <MdOutlineFormatAlignRight
+                                  className=" "
+                                  size="20px"
+                                />{" "}
+                                {/* <span className="lable">Paste</span> */}
+                              </div>
+                            </a>
+                          </li>
+                        </div>
+                      </ul>
+                    </button>
+
+                      <button
+                        className="mr-1 px-1 onhover toolbtn"
+                        title="Line Spacing"
+                      >
+                        <li className="d-flex align-items-center ">
+                          <MdOutlineFormatLineSpacing size="20px" />
+                          {/* <MdOutlineArrowDropDown /> */}
+                        </li>
+                      </button>
+
+                      <button
+                        href=""
+                        className="mr-1 px-1 onhover toolbtn"
+                        title="Line Spacing"
+                      >
+                        <li
+                          className="d-flex align-items-center dropdown-toggle"
+                          id="navbarDropdownMenuLink"
+                          role="button"
+                          data-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          <MdOutlineChecklistRtl size="20px" />
+                          <MdOutlineArrowDropDown />
+                        </li>
+                        <ul
+                          className="dropdown-menu"
+                          aria-labelledby="navbarDropdownMenuLink"
+                          style={{
+                            marginTop: "0.4rem",
+                            width: "fit-content",
+                            backgroundColor: "#edf2fa",
+                          }}
+                        >
+                          <div className="d-flex px-1 align-items-center">
+                            {" "}
+                            <li className="" title="Center">
+                              <a className="dropdown-item onhover" href="#">
+                                <div className="listimg ">
+                                  <MdOutlineFormatAlignCenter
+                                    className=" "
+                                    size="20px"
+                                  />{" "}
+                                </div>
+                              </a>
+                            </li>
+                            <li title="Justify">
+                              <a className="dropdown-item onhover" href="#">
+                                <div className="listimg ">
+                                  <MdOutlineFormatAlignJustify
+                                    className=" "
+                                    size="20px"
+                                  />{" "}
+                                  {/* <span className="lable">Cut</span> */}
+                                </div>
+                              </a>
+                            </li>
+                            <li title=" Left">
+                              <a className="dropdown-item onhover" href="#">
+                                <div className="listimg ">
+                                  <MdOutlineFormatAlignLeft className=" " size="20px" />{" "}
+                                  {/* <span className="lable">Copy</span> */}
+                                </div>
+                              </a>
+                            </li>
+                            <li title="Right">
+                              <a className="dropdown-item onhover" href="#">
+                                <div className="listimg ">
+                                  <MdOutlineFormatAlignRight
+                                    className=" "
+                                    size="20px"
+                                  />{" "}
+                                  {/* <span className="lable">Paste</span> */}
+                                </div>
+                              </a>
+                            </li>
+                          </div>
+                        </ul>
+                      </button>
+
+                      <button
+                        href=""
+                        className="mr-1 px-1 onhover toolbtn"
+                        title="Line Spacing"
+                      >
+                        <li
+                          className="d-flex align-items-center dropdown-toggle"
+                          id="navbarDropdownMenuLink"
+                          role="button"
+                          data-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          <MdOutlineFormatListBulleted size="20px" />
+                          <MdOutlineArrowDropDown />
+                        </li>
+                        <ul
+                          className="dropdown-menu"
+                          aria-labelledby="navbarDropdownMenuLink"
+                          style={{
+                            marginTop: "0.4rem",
+                            width: "fit-content",
+                            backgroundColor: "#edf2fa",
+                          }}
+                        >
+                          <div className="d-flex px-1 align-items-center">
+                            {" "}
+                            <li className="" title="Center">
+                              <a className="dropdown-item onhover" href="#">
+                                <div className="listimg ">
+                                  <MdOutlineFormatAlignCenter
+                                    className=" "
+                                    size="20px"
+                                  />{" "}
+                                </div>
+                              </a>
+                            </li>
+                            <li title="Justify">
+                              <a className="dropdown-item onhover" href="#">
+                                <div className="listimg ">
+                                  <MdOutlineFormatAlignJustify
+                                    className=" "
+                                    size="20px"
+                                  />{" "}
+                                  {/* <span className="lable">Cut</span> */}
+                                </div>
+                              </a>
+                            </li>
+                            <li title=" Left">
+                              <a className="dropdown-item onhover" href="#">
+                                <div className="listimg ">
+                                  <MdOutlineFormatAlignLeft className=" " size="20px" />{" "}
+                                  {/* <span className="lable">Copy</span> */}
+                                </div>
+                              </a>
+                            </li>
+                            <li title="Right">
+                              <a className="dropdown-item onhover" href="#">
+                                <div className="listimg ">
+                                  <MdOutlineFormatAlignRight
+                                    className=" "
+                                    size="20px"
+                                  />{" "}
+                                  {/* <span className="lable">Paste</span> */}
+                                </div>
+                              </a>
+                            </li>
+                          </div>
+                        </ul>
+                      </button>
+
+                      <button
+                        href=""
+                        className="mr-1 px-1 onhover toolbtn"
+                        title="Line Spacing"
+                      >
+                        <li
+                          className="d-flex align-items-center dropdown-toggle"
+                          id="navbarDropdownMenuLink"
+                          role="button"
+                          data-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          <MdOutlineFormatListNumberedRtl
+                            size="20px"
+                            title="Numbered List "
+                          />
+                          <MdOutlineArrowDropDown />
+                        </li>
+                        <ul
+                          className="dropdown-menu"
+                          aria-labelledby="navbarDropdownMenuLink"
+                          style={{
+                            marginTop: "0.4rem",
+                            width: "fit-content",
+                            backgroundColor: "#edf2fa",
+                          }}
+                        >
+                          <div className="d-flex px-1 align-items-center">
+                            {" "}
+                            <li className="" title="Center">
+                              <a className="dropdown-item onhover" href="#">
+                                <div className="listimg ">
+                                  <MdOutlineFormatAlignCenter
+                                    className=" "
+                                    size="20px"
+                                  />{" "}
+                                </div>
+                              </a>
+                            </li>
+                            <li title="Justify">
+                              <a className="dropdown-item onhover" href="#">
+                                <div className="listimg ">
+                                  <MdOutlineFormatAlignJustify
+                                    className=" "
+                                    size="20px"
+                                  />{" "}
+                                  {/* <span className="lable">Cut</span> */}
+                                </div>
+                              </a>
+                            </li>
+                            <li title=" Left">
+                              <a className="dropdown-item onhover" href="#">
+                                <div className="listimg ">
+                                  <MdOutlineFormatAlignLeft className=" " size="20px" />{" "}
+                                  {/* <span className="lable">Copy</span> */}
+                                </div>
+                              </a>
+                            </li>
+                            <li title="Right">
+                              <a className="dropdown-item onhover" href="#">
+                                <div className="listimg ">
+                                  <MdOutlineFormatAlignRight
+                                    className=" "
+                                    size="20px"
+                                  />{" "}
+                                  {/* <span className="lable">Paste</span> */}
+                                </div>
+                              </a>
+                            </li>
+                          </div>
+                        </ul>
+                      </button></div>
                     <li className="" title="Center">
                       <a className="dropdown-item onhover" href="#">
                         <div className="listimg ">
@@ -616,6 +952,7 @@ const Toolbar = () => {
                         </div>
                       </a>
                     </li>
+
                   </div>
                 </ul>
               </button>

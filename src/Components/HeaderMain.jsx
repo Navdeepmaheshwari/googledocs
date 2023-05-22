@@ -30,10 +30,28 @@ import {
   MdOutlineAddToDrive,
   MdOutlineCloudDone,
   MdAddToDrive,
+  MdFindReplace,
+  MdDelete,
+  MdDeleteOutline,
+  MdEdit,
+  MdFullscreen,
+  MdArrowRight,
+  MdDone,
+  MdCheckBoxOutlineBlank,
+  MdImage,
+  MdOutlineImage,
+  MdBlock,
+  MdTableView,
+  MdOutlineDraw,
+  MdAddChart,
+  MdEmojiEmotions,
+  MdHorizontalRule,
 } from "react-icons/md";
 const HeaderMain = () => {
-  const [name, setName] = useState("");
-  const [fav, setfav] = useState(false);
+  const [name, setName] = useState(""); // to set the filename
+  const [fav, setfav] = useState(false); // to set the favourite
+
+  //function to chnage the name
   const handleName = (event) => {
     // console.log("OnChane");
     setName(event.target.value);
@@ -89,7 +107,7 @@ const HeaderMain = () => {
             />
           </div>
 
-          {/* <MdOutlineStarOutline /> */}
+          {/* All List Items */}
           <div className="listItem ">
             <ul className="d-flex list-unstyled mb-0">
               <li className="mr-1 px-1 onhover ">
@@ -103,6 +121,7 @@ const HeaderMain = () => {
                 >
                   File
                 </a>
+                {/* Nested List Items */}
                 <ul
                   className="dropdown-menu"
                   style={{ width: "15rem" }}
@@ -280,7 +299,7 @@ const HeaderMain = () => {
                     <hr class="dropdown-divider" />
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item disabled" href="#">
                       <div className="sub">
                         <div className="listimg">
                           <MdShortcut className=" " size="18px" />{" "}
@@ -291,7 +310,7 @@ const HeaderMain = () => {
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item disabled" href="#">
                       <div className="sub">
                         <div className="listimg">
                           <MdContentCopy className=" " size="18px" />{" "}
@@ -312,6 +331,10 @@ const HeaderMain = () => {
                       </div>
                     </a>
                   </li>
+
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
                   <li>
                     <a className="dropdown-item" href="#">
                       <div className="sub">
@@ -321,6 +344,128 @@ const HeaderMain = () => {
                         </div>
 
                         <span className="commands">Ctrl+A</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item disabled" href="#">
+                      <div className="sub">
+                        <div className="listimg">
+                          <MdDeleteOutline className=" " size="18px" />{" "}
+                          <span className="lable">Delete</span>
+                        </div>
+
+                        <span className="commands"></span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      <div className="sub">
+                        <div className="listimg">
+                          <MdFindReplace className=" " size="18px" />{" "}
+                          <span className="lable">Find and Replace</span>
+                        </div>
+
+                        <span className="commands">Ctrl+H</span>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li className="mx-1 px-2 onhover ">
+                <a
+                  className="dropdown-toggle"
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  View
+                </a>
+                <ul
+                  className="dropdown-menu"
+                  aria-labelledby="navbarDropdownMenuLink"
+                  style={{ width: "15rem" }}
+                >
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      <div className="sub">
+                        <div className="listimg">
+                          <MdEdit className=" " size="18px" />{" "}
+                          <span className="lable">Mode</span>
+                        </div>
+                        <MdOutlineArrowRight className=" " size="20px" />{" "}
+
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      <div className="sub">
+                        <div className="listimg">
+                          <MdDone className=" " size="18px" />{" "}
+                          <span className="lable">Show Print LAyout</span>
+                        </div>
+                        {/* <span className="commands">Ctrl+Y</span> */}
+                      </div>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a className="dropdown-item " href="#">
+                      <div className="sub">
+                        <div className="listimg">
+                          <MdDone className=" " size="18px" />{" "}
+                          <span className="lable">Show Ruler</span>
+                        </div>
+                        {/* <span className="commands">Ctrl+X</span> */}
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item " href="#">
+                      <div className="sub">
+                        <div className="listimg">
+                          <MdDone className=" " size="18px" />{" "}
+                          <span className="lable">Show Outline</span>
+                        </div>
+                        {/* <span className="commands">Ctrl+C</span> */}
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      <div className="sub">
+                        <div className="listimg">
+                          <MdCheckBoxOutlineBlank className=" " size="18px" />{" "}
+                          <span className="lable">Show Equation Toolbar</span>
+                        </div>
+                        {/* <span className="commands">Ctrl+V</span> */}
+                      </div>
+                    </a>
+                  </li>
+
+
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      <div className="sub">
+                        <div className="listimg">
+                          <MdFullscreen className=" " size="18px" />{" "}
+                          <span className="lable">Full Screen</span>
+                        </div>
+
+                        <span className="commands"></span>
                       </div>
                     </a>
                   </li>
@@ -336,47 +481,98 @@ const HeaderMain = () => {
                   data-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  View
-                </a>
-                <ul
-                  className="dropdown-menu"
-                  aria-labelledby="navbarDropdownMenuLink"
-                >
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li className="mx-1 px-2 onhover ">
-                <a
-                  className="dropdown-toggle"
-                  href="#"
-                  id="navbarDropdownMenuLink"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-expanded="false"
-                >
                   Insert
                 </a>
                 <ul
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
+                  style={{ width: "15rem" }}
                 >
                   <li>
                     <a className="dropdown-item" href="#">
-                      Action
+                      <div className="sub">
+                        <div className="listimg">
+                          <MdOutlineImage className=" " size="18px" />{" "}
+                          <span className="lable">Image</span>
+                        </div>
+                        <MdOutlineArrowRight className=" " size="20px" />{" "}
+
+                      </div>
                     </a>
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
-                      Another action
+                      <div className="sub">
+                        <div className="listimg">
+                          <MdTableView className=" " size="18px" />{" "}
+                          <span className="lable">Table</span>
+                        </div>
+                        <MdOutlineArrowRight className=" " size="20px" />{" "}
+
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      <div className="sub">
+                        <div className="listimg">
+                          <MdOutlineDraw className=" " size="18px" />{" "}
+                          <span className="lable">Drawing</span>
+                        </div>
+                        <MdOutlineArrowRight className=" " size="20px" />{" "}
+
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      <div className="sub">
+                        <div className="listimg">
+                          <MdAddChart className=" " size="18px" />{" "}
+                          <span className="lable">Chart</span>
+                        </div>
+                        <MdOutlineArrowRight className=" " size="20px" />{" "}
+
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      <div className="sub">
+                        <div className="listimg">
+                          <MdHorizontalRule className=" " size="18px" />{" "}
+                          <span className="lable">Horizontal Line</span>
+                        </div>
+                        {/* <MdOutlineArrowRight className=" " size="20px" />{" "} */}
+
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      <div className="sub">
+                        <div className="listimg">
+                          <MdEmojiEmotions className=" " size="18px" />{" "}
+                          <span className="lable">Emoji</span>
+                        </div>
+                        <MdOutlineArrowRight className=" " size="20px" />{" "}
+
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      <div className="sub">
+                        <div className="listimg">
+                          <MdBlock className=" " size="18px" />{" "}
+                          <span className="lable">Building Blocks</span>
+                        </div>
+                        {/* <MdOutlineArrowRight className=" " size="20px" />{" "} */}
+
+                      </div>
                     </a>
                   </li>
                 </ul>
@@ -496,6 +692,8 @@ const HeaderMain = () => {
           </div>
         </div>
       </div>
+
+      {/* Right Side of Header */}
       <div className="right d-flex ">
         {/*   <div className="p-2">
           <MdOutlineTimer size="30px" />
